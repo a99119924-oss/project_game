@@ -1,25 +1,33 @@
 import time
 import random
+
 def dice():
-    player=random.randint(1,6)
-    print("Вам выпало: "+str(player))
+    while True:
+        print('Вы кинули кубик...')
+        time.sleep(2)
+        player = random.randint(1, 6)
+        print("Вам выпало: " + str(player))
 
-    ai = random.randint(1,6)
-    print('Компьютер думает...')
-    time.sleep(2)
-    print('У компьютера выпало: '+str(ai))
+        ai = random.randint(1, 6)
+        print('Компьютер делает бросок...')
+        time.sleep(2)
+        print('У компьютера выпало: ' + str(ai))
 
-    if player>ai:
-        print('Вы выйграли')
-    elif ai<player:
-        print('Вы проиграли')
-    elif player==ai:
-        print('Ничья')
-    print("Вы хотите выйти? y/n")
-    count=input()
-    if count=='Y' or count=="y":
-        exit()
-    elif count=="N" or count=='n':
-        pass
-    else:
-        print('Ваш выбро непонятен. Повторите еще раз')
+        if player > ai:
+            print('Вы выиграли!')
+        elif player < ai:
+            print('Вы проиграли.')
+        else: 
+            print('Ничья!')
+
+        while True:
+            count = input("Вы хотите выйти? (y/n): ").strip().lower()
+            if count in ('y', 'n'):
+                break
+            else:
+                print('Ваш выбор непонятен. Повторите ещё раз.')
+
+        if count == 'y':
+            print("Спасибо за игру!")
+            time.sleep(2)
+            exit() 
